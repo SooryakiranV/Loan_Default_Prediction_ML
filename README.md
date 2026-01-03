@@ -1,2 +1,7 @@
-# Loan_Default_Prediction_ML
-Machine learning project for predicting loan default using structured data
+# Loan Default Prediction (Machine Learning)
+
+- Built a machine learning model to predict loan default using structured financial data.
+- Performed data preprocessing, exploratory analysis, and feature engineering.
+- Trained and evaluated classification models to analyse default risk.
+
+**Tools:** Python, Pandas, NumPy, Scikit-learn
