@@ -1,24 +1,35 @@
 # Loan Default Prediction Using Machine Learning
 
-End-to-end machine learning pipeline for predicting loan defaults with business-impact optimisation.
+Notebook project for classifying loan default risk with scikit-learn.
 
-# Results
+## Validation results
 
-- F1-score improved from 0.72 → 0.84 through feature engineering and model benchmarking
-- Business-impact threshold optimisation — classification cutoff selected to maximise net financial outcome, not default 0.5
-- Benchmarked Logistic Regression, Random Forest, and Gradient Boosting using 5-fold cross-validation
+Results use a 20% stratified validation set with 11,729 rows.
 
-# Dataset
+| Model | F1 | AUC |
+|---|---:|---:|
+| Logistic Regression | 0.654 | 0.917 |
+| Random Forest | 0.795 | 0.932 |
+| Gradient Boosting | 0.787 | 0.940 |
+| Tuned Random Forest | 0.795 | 0.935 |
 
-- 58,000+ borrower records with demographic, loan, and credit history features
-- 9 engineered features including age groups, income bands, debt burden categories, and interaction terms
+The tuned Random Forest has a reported 5-fold cross-validation F1 of 0.794. GridSearchCV used 3-fold cross-validation for parameter tuning.
 
-# Tech Stack
+A cost-based business-impact function selected a probability threshold of 0.15, with recall 0.86 and precision 0.48. The dollar figure in the notebook is a simulation based on stated assumptions: a rejected defaulter saves the loan amount, while a good loan earns 10%. It is not a real saving.
 
-Python · Scikit-learn · Pandas · NumPy · Matplotlib · Seaborn · Jupyter Notebook
+## Run
 
-# Key Features
+The notebook expects `train.csv` and `test.csv` in the repository root. These files are not included. Supply those inputs before running the notebook.
 
-- Full Scikit-learn Pipeline with ColumnTransformer for automated preprocessing
-- One-hot encoding and standard scaling for clean, reproducible data flow
-- ROC curves, confusion matrices, and feature importance visualisations
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+jupyter notebook loan_default_prediction.ipynb
+```
+
+Run the notebook cells in order.
+
+## Topics
+
+credit-risk, loan-default, machine-learning, scikit-learn, jupyter-notebook
